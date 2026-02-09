@@ -26,18 +26,8 @@ include /etc/sway/config-vars.d/*
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg ~/Bilder/desktop-hintergrund/mars.jpg fill
-output * bg /usr/share/backgrounds/default.jxl fill
-#
-# Example configuration:
-# HDMI-A-1 (Asus) links, DP-1 (BenQ) Hauptmonitor rechts
-output HDMI-A-1 position 0 0
-output DP-1 position 1920 0
-# Elgato Prompter über BenQ, linksbündig
-output DVI-I-1 position 1920 -600
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+# Maschinenspezifisch ausgelagert nach ~/.config/sway/config.d/monitors.conf
+# (nicht im Git-Repo, jede Maschine hat eigene Version)
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -224,3 +214,4 @@ bar {
 exec_always autotiling
 # 
 include /etc/sway/config.d/*
+include ~/.config/sway/config.d/*
