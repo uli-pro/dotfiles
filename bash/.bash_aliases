@@ -33,3 +33,10 @@ alias bb='setsid flatpak run eu.betterbird.Betterbird &>/dev/null &'
 alias nvf='nvim $(fzf -m --preview "bat --color=always {}")'
 alias of='xdg-open "$(fzf --preview "bat --color=always {}")"'
 alias typora='nohup ~/Programme/Typora-linux-x64/Typora &>/dev/null &'
+
+# Backup
+
+alias backup-mount='mkdir -p /tmp/backup && borg mount ssh://u543865@u543865.your-storagebox.de:23/./desktop-backup /tmp/backup && echo "Backup gemountet unter /tmp/backup"'
+alias backup-umount='fusermount -u /tmp/backup && echo "Backup ausgehängt"'
+alias backup-list='borgmatic list'
+alias backup-status='borgmatic info'

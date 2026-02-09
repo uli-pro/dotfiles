@@ -1,0 +1,51 @@
+# borgmatic Desktop-Backup → Hetzner Storage Box
+# Doku: ~/Nextcloud/a-projekte/1-uli-persoenlich/claude-assistent/backup/backup-und-restore.md
+
+repositories:
+  - path: ssh://u543865@u543865.your-storagebox.de:23/./desktop-backup
+    label: hetzner
+    encryption: repokey-blake2
+
+source_directories:
+  - /home/uli
+
+exclude_patterns:
+  - /home/uli/.cache
+  - /home/uli/.local/share/npm
+  - /home/uli/.local/share/nvim
+  - /home/uli/.local/lib
+  - /home/uli/.local/share/pipx
+  - /home/uli/.venvs
+  - /home/uli/.npm
+  - "**/.Trash*"
+  - "**/Cache"
+  - "**/cache"
+  - "**/*.pyc"
+  - "**/node_modules"
+  - "**/lost+found"
+
+encryption_passcommand: cat /home/uli/.config/borgmatic/.passphrase
+
+archive_name_format: "desktop-{now:%Y-%m-%dT%H:%M:%S}"
+
+keep_daily: 7
+keep_weekly: 4
+keep_monthly: 6
+
+checks:
+  - name: repository
+    frequency: 2 weeks
+  - name: archives
+    frequency: 1 month
+
+commands:
+  - before: action
+    when:
+      - create
+    run:
+      - /home/uli/.local/bin/system-snapshot.sh
+  - after: action
+    when:
+      - create
+    run:
+      - date '+%Y-%m-%d %H:%M' > /home/uli/.local/state/borgmatic-last-backup

@@ -1,0 +1,9 @@
+[Unit]
+Description=borgmatic desktop backup
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/borgmatic --verbosity -1 --syslog-verbosity 1
+TimeoutStartSec=3600
