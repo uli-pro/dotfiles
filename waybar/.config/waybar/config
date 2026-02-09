@@ -1,0 +1,37 @@
+ {                                                                                                                 
+      "layer": "top",                                                                                               
+      "position": "top",                                                                                            
+      "height": 26,                                                                                                 
+      "modules-left": ["hyprland/workspaces", "sway/workspaces", "sway/mode"],                                                                      
+      "modules-center": ["cpu","temperature", "memory", "network"],                                                                                  
+      "modules-right": ["pulseaudio", "clock", "tray"],                                          
+                                                                                                                    
+      "hyprland/workspaces": {                                                                                      
+          "format": "{id}"                                                                                          
+      },                                                                                                            
+      "clock": {                                                                                                    
+          "format": "{:%H:%M  %d.%m.%Y}"                                                                            
+      },                                                                                                            
+      "cpu": {                                                                                                      
+          "format": "CPU {usage}%"                                                                                  
+      },                                                                                                            
+      "memory": {                                                                                                   
+          "format": "RAM {percentage}%"                                                                             
+      },                                                                                                            
+      "pulseaudio": {                                                                                               
+          "format": "Vol {volume}%",                                                                                
+          "on-click": "pavucontrol"                                                                                 
+      },                                                                                                            
+      "network": {                                                                                                  
+          "format-ethernet": "LAN",                                                                                 
+          "format-disconnected": "Offline"                                                                          
+      },                                                                                                            
+      "tray": {                                                                                                     
+          "spacing": 10                                                                                             
+      },
+      "temperature": {                                                                                              
+          "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",                                                      
+          "format": "{temperatureC}°C"                                                                              
+      }                                                                                                                   
+  }                                                                                                                 
+            

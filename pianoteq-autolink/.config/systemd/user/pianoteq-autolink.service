@@ -1,0 +1,7 @@
+[Unit]
+Description=Auto-connect Pianoteq to iConnectAUDIO4+
+After=pipewire.service wireplumber.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/pianoteq-autolink.sh
