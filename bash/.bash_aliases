@@ -16,6 +16,8 @@ alias ncb='cd /home/uli/Nextcloud/b-archiv'
 
 alias notizen='cd /home/uli/Nextcloud/_Notizen'
 
+alias books='cd /home/uli/Nextcloud/ebooks-audiobooks'
+
 alias config='cd /home/uli/.config'
 
 #Apps
@@ -34,9 +36,13 @@ alias nvf='nvim $(fzf -m --preview "bat --color=always {}")'
 alias of='xdg-open "$(fzf --preview "bat --color=always {}")"'
 alias typora='nohup ~/Programme/Typora-linux-x64/Typora &>/dev/null &'
 
+# Kalender
+alias kal='vdirsyncer sync && khal interactive; vdirsyncer sync'
+
 # Backup
 
 alias backup-mount='mkdir -p /tmp/backup && borg mount ssh://u543865@u543865.your-storagebox.de:23/./desktop-backup /tmp/backup && echo "Backup gemountet unter /tmp/backup"'
 alias backup-umount='fusermount -u /tmp/backup && echo "Backup ausgehängt"'
 alias backup-list='borgmatic list'
 alias backup-status='borgmatic info'
+alias backup-now='borgmatic create --verbosity 1 --list'

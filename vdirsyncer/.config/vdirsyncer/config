@@ -1,0 +1,36 @@
+[general]
+status_path = "~/.local/share/vdirsyncer/status/"
+
+# --- Kalender: uli ---
+[pair uli]
+a = "uli_local"
+b = "uli_remote"
+collections = ["uli-2"]
+
+[storage uli_local]
+type = "filesystem"
+path = "~/.local/share/calendars/"
+fileext = ".ics"
+
+[storage uli_remote]
+type = "caldav"
+url = "https://nc.familieprobst.org/remote.php/dav/calendars/uli/"
+username = "uli"
+password.fetch = ["command", "cat", "~/.config/vdirsyncer/nc-password"]
+
+# --- Kalender: persoenlich ---
+[pair persoenlich]
+a = "persoenlich_local"
+b = "persoenlich_remote"
+collections = ["persoenlich-1"]
+
+[storage persoenlich_local]
+type = "filesystem"
+path = "~/.local/share/calendars/"
+fileext = ".ics"
+
+[storage persoenlich_remote]
+type = "caldav"
+url = "https://nc.familieprobst.org/remote.php/dav/calendars/uli/"
+username = "uli"
+password.fetch = ["command", "cat", "~/.config/vdirsyncer/nc-password"]

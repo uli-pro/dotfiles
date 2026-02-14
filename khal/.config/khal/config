@@ -1,0 +1,23 @@
+[calendars]
+
+[[uli]]
+path = ~/.local/share/calendars/uli-2
+color = dark blue
+type = calendar
+
+[[persoenlich]]
+path = ~/.local/share/calendars/persoenlich-1
+color = light cyan
+type = calendar
+
+[locale]
+timeformat = %H:%M
+dateformat = %d.%m.
+longdateformat = %d.%m.%Y
+datetimeformat = %d.%m. %H:%M
+longdatetimeformat = %d.%m.%Y %H:%M
+default_timezone = Europe/Berlin
+local_timezone = Europe/Berlin
+
+[default]
+default_calendar = uli
