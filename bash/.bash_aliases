@@ -32,6 +32,15 @@ alias thun='nohup thunar &>/dev/null &'
 
 alias bb='setsid flatpak run eu.betterbird.Betterbird &>/dev/null &'
 
+# Yazi: cd ins zuletzt besuchte Verzeichnis bei quit mit q
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  command yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
+
 alias nvf='nvim $(fzf -m --preview "bat --color=always {}")'
 alias of='xdg-open "$(fzf --preview "bat --color=always {}")"'
 alias typora='nohup ~/Programme/Typora-linux-x64/Typora &>/dev/null &'
