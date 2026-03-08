@@ -45,6 +45,9 @@ alias nvf='nvim $(fzf -m --preview "bat --color=always {}")'
 alias of='xdg-open "$(fzf --preview "bat --color=always {}")"'
 alias typora='nohup ~/Programme/Typora-linux-x64/Typora &>/dev/null &'
 
+# Wochen-Review
+alias review='~/bin/weekly-review.sh'
+
 # Kalender
 alias kal='vdirsyncer sync && khal interactive; vdirsyncer sync'
 
