@@ -25,7 +25,7 @@ sleep 1
 # --- Monitor 2 (DP-1): Workspace 2 ---
 swaymsg 'workspace 2; move workspace to output DP-1'
 
-foot --app-id=review-claude --working-directory="$COACH_DIR" &
+foot --app-id=review-claude --working-directory="$COACH_DIR" -e claude &
 sleep 1
 
 libreoffice --calc "$PLAN_FILE" &

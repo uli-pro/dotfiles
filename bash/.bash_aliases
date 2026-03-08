@@ -1,12 +1,12 @@
 # Directories
 
-alias assistent='cd /home/uli/Nextcloud/a-projekte/1-uli-persoenlich/claude-assistent'
+alias assistent='cd /home/uli/Nextcloud/a-projekte/1-uli-persoenlich/claude-assistent && claude'
 
 alias bvs='cd /home/uli/Nextcloud/a-projekte/4-probst-dienstleistungen/software-entwicklung/harvard-cs50/ngue-bvs-app'
 
 alias homeserver='cd /home/uli/Nextcloud/a-projekte/4-probst-dienstleistungen/software-entwicklung/homeserver'
 
-alias coach='cd /home/uli/Nextcloud/a-projekte/1-uli-persoenlich/coach'
+alias coach='cd /home/uli/Nextcloud/a-projekte/1-uli-persoenlich/coach && claude'
 
 alias karten='cd /home/uli/Nextcloud/b-archiv/2-familie/karten'
 
