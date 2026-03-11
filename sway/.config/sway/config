@@ -174,9 +174,9 @@ input * {
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 
-    # Screenshots (grim + slurp, copied to clipboard)
-    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
-    bindsym $mod+Mod1+s exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | wl-copy
+    # Screenshots (grim + slurp, saved to ~/Bilder/Screenshots + clipboard)
+    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | tee ~/Bilder/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy
+    bindsym $mod+Mod1+s exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | tee ~/Bilder/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy
 
     # Lockscreen
     bindsym $mod+Escape exec swaylock -f -c 000000
