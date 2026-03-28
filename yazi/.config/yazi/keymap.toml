@@ -1,4 +1,4 @@
 [[manager.prepend_keymap]]
 on = ["e"]
-run = 'shell "unar $@" --confirm'
+run = "shell --block -- unar %s"
 desc = "Extract archive with unar"
