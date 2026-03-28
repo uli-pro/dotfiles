@@ -1,9 +1,9 @@
-[manager]
+[mgr]
 linemode = "mtime"
 
 [opener]
 pdf = [
-    { run = 'zathura "$@"', desc = "Zathura" },
+    { run = 'zathura %s', orphan = true, desc = "Zathura" },
 ]
 
 [open]
