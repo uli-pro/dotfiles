@@ -8,6 +8,8 @@ alias homeserver='cd /home/uli/Nextcloud/a-projekte/4-probst-dienstleistungen/so
 
 alias coach='cd /home/uli/Nextcloud/a-projekte/1-uli-persoenlich/coach && claude'
 
+alias feg='cd /home/uli/Nextcloud/a-projekte/5-ngue/vortrag-feg-wetzlar && claude'
+
 alias karten='cd /home/uli/Nextcloud/b-archiv/2-familie/karten'
 
 alias nca='cd /home/uli/Nextcloud/a-projekte'
@@ -58,3 +60,6 @@ alias backup-umount='fusermount -u /tmp/backup && echo "Backup ausgehängt"'
 alias backup-list='borgmatic list'
 alias backup-status='borgmatic info'
 alias backup-now='borgmatic create --verbosity 1 --list'
+
+# VPN / Mullvad — Programme am Tunnel vorbei starten
+alias claude='mullvad-exclude /home/uli/.local/bin/claude'
