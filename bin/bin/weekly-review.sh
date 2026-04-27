@@ -6,7 +6,7 @@
 
 COACH_DIR="$HOME/Nextcloud/a-projekte/1-uli-persoenlich/coach"
 REVIEW_FILE="$COACH_DIR/woechentliche-reflexion.md"
-PLAN_FILE="$COACH_DIR/zwj01/wochenplaene.ods"
+PLAN_FILE="$COACH_DIR/zwj02/wochenplaene.ods"
 
 # --- Monitor 1 (HDMI-A-1): Workspace 1 ---
 swaymsg 'workspace 1; move workspace to output HDMI-A-1'
