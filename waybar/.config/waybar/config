@@ -3,7 +3,7 @@
       "position": "top",                                                                                            
       "height": 26,                                                                                                 
       "modules-left": ["hyprland/workspaces", "sway/workspaces", "sway/mode"],                                                                      
-      "modules-center": ["cpu","temperature", "memory", "network"],                                                                                  
+      "modules-center": ["cpu","temperature", "memory", "network", "custom/mullvad"],
       "modules-right": ["pulseaudio", "clock", "tray"],                                          
                                                                                                                     
       "hyprland/workspaces": {                                                                                      
@@ -29,9 +29,15 @@
       "tray": {                                                                                                     
           "spacing": 10                                                                                             
       },
-      "temperature": {                                                                                              
-          "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",                                                      
-          "format": "{temperatureC}°C"                                                                              
-      }                                                                                                                   
+      "temperature": {
+          "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+          "format": "{temperatureC}°C"
+      },
+      "custom/mullvad": {
+          "exec": "mullvad status | grep -q Connected && echo '{\"text\": \"VPN\", \"class\": \"connected\", \"tooltip\": \"'$(mullvad status | head -2 | tr '\\n' ' ')'\" }' || echo '{\"text\": \"VPN\", \"class\": \"disconnected\", \"tooltip\": \"VPN getrennt\"}'",
+          "return-type": "json",
+          "interval": 10,
+          "on-click": "\"/opt/Mullvad VPN/mullvad-vpn\""
+      }
   }                                                                                                                 
             

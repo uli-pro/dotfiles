@@ -1,0 +1,21 @@
+@import url("/etc/xdg/waybar/style.css");
+
+#cpu {
+    background-color: #f1c40f;
+    color: #000000;
+}
+
+#pulseaudio {
+    background-color: #7f8c8d;
+    color: #ffffff;
+}
+
+#custom-mullvad {
+    padding: 0 10px;
+    color: #ffffff;
+    background-color: #2ecc71;
+}
+
+#custom-mullvad.disconnected {
+    background-color: #f53c3c;
+}
