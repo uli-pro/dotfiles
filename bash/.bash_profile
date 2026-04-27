@@ -4,4 +4,4 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # User binaries (pipx, etc.)
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
