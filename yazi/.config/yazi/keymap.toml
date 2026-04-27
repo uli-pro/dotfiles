@@ -2,3 +2,8 @@
 on = "e"
 run = "shell --block -- unar %h"
 desc = "Extract archive with unar"
+
+[[mgr.prepend_keymap]]
+on = "T"
+run = 'shell -- ~/Programme/Typora-linux-x64/Typora "$@" &'
+desc = "Open in Typora"
