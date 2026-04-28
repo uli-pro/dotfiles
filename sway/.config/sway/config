@@ -178,6 +178,11 @@ input * {
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 
+    # Drop-Down-Terminal (Quake-Style) — F12 toggelt foot-Scratchpad
+    for_window [app_id="foot-dropdown"] floating enable, move scratchpad
+    exec foot --app-id=foot-dropdown
+    bindsym F12 [app_id="foot-dropdown"] scratchpad show, resize set 100 ppt 50 ppt, move position 0 0
+
     # Screenshots (grim + slurp, saved to ~/Bilder/Screenshots + clipboard)
     bindsym $mod+Shift+s exec grim -g "$(slurp)" - | tee ~/Bilder/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy
     bindsym $mod+Mod1+s exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | tee ~/Bilder/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy
