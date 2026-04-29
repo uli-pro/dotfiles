@@ -179,9 +179,16 @@ input * {
     bindsym $mod+minus scratchpad show
 
     # Drop-Down-Terminal (Quake-Style) — F12 toggelt foot-Scratchpad
-    for_window [app_id="foot-dropdown"] floating enable, move scratchpad
+    # Anker ^...$ zwingend: app_id-Kriterien sind Regex, sonst matcht "foot-dropdown" auch "foot-dropdown2"
+    for_window [app_id="^foot-dropdown$"] floating enable, move scratchpad
     exec foot --app-id=foot-dropdown
-    bindsym F12 [app_id="foot-dropdown"] scratchpad show, resize set 100 ppt 50 ppt, move position 0 0
+    bindsym F12 [app_id="^foot-dropdown$"] scratchpad show, resize set 100 ppt 50 ppt, move position 0 0
+
+    # Zweites Drop-Down-Terminal — Shift+F12 toggelt zweiten foot-Scratchpad an gleicher Position
+    # Startet yazi via Wrapper-Funktion `y` (cwd-Übergabe an Shell); nach `q` bleibt eine interaktive bash-Shell offen
+    for_window [app_id="^foot-dropdown2$"] floating enable, move scratchpad
+    exec foot --app-id=foot-dropdown2 bash -ic 'y; exec bash'
+    bindsym Shift+F12 [app_id="^foot-dropdown2$"] scratchpad show, resize set 100 ppt 50 ppt, move position 0 0
 
     # Screenshots (grim + slurp, saved to ~/Bilder/Screenshots + clipboard)
     bindsym $mod+Shift+s exec grim -g "$(slurp)" - | tee ~/Bilder/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy
