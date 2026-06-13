@@ -5,8 +5,13 @@ linemode = "mtime"
 pdf = [
     { run = 'zathura %s', orphan = true, desc = "Zathura" },
 ]
+csv = [
+    { run = 'vd %s', block = true, desc = "VisiData" },
+    { run = 'libreoffice --calc %s', orphan = true, desc = "LibreOffice Calc" },
+]
 
 [open]
 prepend_rules = [
     { mime = "application/pdf", use = "pdf" },
+    { url = "*.csv", use = "csv" },
 ]
