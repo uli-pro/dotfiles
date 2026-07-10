@@ -176,7 +176,9 @@ input * {
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    # Negativer Lookahead schließt foot-dropdown* aus, damit die Quake-Drop-Downs
+    # (F12 / Shift+F12) nicht im normalen Scratchpad-Cycle auftauchen.
+    bindsym $mod+minus [app_id="^(?!foot-dropdown).*"] scratchpad show
 
     # Drop-Down-Terminal (Quake-Style) — F12 toggelt foot-Scratchpad
     # Anker ^...$ zwingend: app_id-Kriterien sind Regex, sonst matcht "foot-dropdown" auch "foot-dropdown2"
@@ -189,6 +191,15 @@ input * {
     for_window [app_id="^foot-dropdown2$"] floating enable, move scratchpad
     exec foot --app-id=foot-dropdown2 bash -ic 'y; exec bash'
     bindsym Shift+F12 [app_id="^foot-dropdown2$"] scratchpad show, resize set 100 ppt 50 ppt, move position 0 0
+
+    # Drittes Drop-Down-Terminal — Shift+Strg+F12 toggelt Claude Assistent (foot-dropdown3) an gleicher Position
+    # Startet Claude Code via Alias `assistent` (cd ins claude-assistent-Projekt + claude); nach Exit bleibt eine interaktive bash-Shell offen
+    for_window [app_id="^foot-dropdown3$"] floating enable, move scratchpad
+    exec foot --app-id=foot-dropdown3 bash -ic 'assistent; exec bash'
+    bindsym Shift+Ctrl+F12 [app_id="^foot-dropdown3$"] scratchpad show, resize set 100 ppt 50 ppt, move position 0 0
+
+    # Typora (XWayland) startet sich selbst im Fullscreen — unterdrücken
+    for_window [class="^Typora$"] fullscreen disable
 
     # Screenshots (grim + slurp, saved to ~/Bilder/Screenshots + clipboard)
     bindsym $mod+Shift+s exec grim -g "$(slurp)" - | tee ~/Bilder/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy
