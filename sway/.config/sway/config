@@ -180,17 +180,18 @@ input * {
     # (F12 / Shift+F12) nicht im normalen Scratchpad-Cycle auftauchen.
     bindsym $mod+minus [app_id="^(?!foot-dropdown).*"] scratchpad show
 
-    # Drop-Down-Terminal (Quake-Style) — F12 toggelt foot-Scratchpad
+    # Drop-Down-Terminal (Quake-Style) — F12 toggelt foot-Scratchpad, rechtes unteres Viertel
     # Anker ^...$ zwingend: app_id-Kriterien sind Regex, sonst matcht "foot-dropdown" auch "foot-dropdown2"
     for_window [app_id="^foot-dropdown$"] floating enable, move scratchpad
     exec foot --app-id=foot-dropdown
-    bindsym F12 [app_id="^foot-dropdown$"] scratchpad show, resize set 100 ppt 50 ppt, move position 0 0
+    # Y-Position 527 = Arbeitsflächenhöhe 1054 (1080 − 26 px Waybar) − Fensterhöhe 527 (50 ppt von 1054)
+    bindsym F12 [app_id="^foot-dropdown$"] scratchpad show, resize set 50 ppt 50 ppt, move position 960 527
 
-    # Zweites Drop-Down-Terminal — Shift+F12 toggelt zweiten foot-Scratchpad, rechte Bildschirmhälfte
+    # Zweites Drop-Down-Terminal — Shift+F12 toggelt zweiten foot-Scratchpad, rechtes oberes Viertel
     # Startet yazi via Wrapper-Funktion `y` (cwd-Übergabe an Shell); nach `q` bleibt eine interaktive bash-Shell offen
     for_window [app_id="^foot-dropdown2$"] floating enable, move scratchpad
     exec foot --app-id=foot-dropdown2 bash -ic 'y; exec bash'
-    bindsym Shift+F12 [app_id="^foot-dropdown2$"] scratchpad show, resize set 50 ppt 100 ppt, move position 960 0
+    bindsym Shift+F12 [app_id="^foot-dropdown2$"] scratchpad show, resize set 50 ppt 50 ppt, move position 960 0
 
     # Drittes Drop-Down-Terminal — Shift+Strg+F12 toggelt Claude Assistent (foot-dropdown3), linke Bildschirmhälfte
     # Startet Claude Code via Alias `assistent` (cd ins claude-assistent-Projekt + claude); nach Exit bleibt eine interaktive bash-Shell offen
