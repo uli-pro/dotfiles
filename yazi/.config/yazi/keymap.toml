@@ -7,3 +7,8 @@ desc = "Extract archive with unar"
 on = "T"
 run = 'shell -- ~/Programme/Typora-linux-x64/Typora "$@" &'
 desc = "Open in Typora"
+
+[[mgr.prepend_keymap]]
+on = "I"
+run = 'shell -- gthumb "$@" &'
+desc = "Open in gThumb"
