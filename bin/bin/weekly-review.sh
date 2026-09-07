@@ -1,7 +1,7 @@
 #!/bin/bash
 # weekly-review.sh - Wochen-Review Layout auf zwei Monitoren aufbauen
 #
-# Monitor 1 (HDMI-A-1): Betterbird | Todoist / Neovim (Reflexion)
+# Monitor 1 (HDMI-A-1): Betterbird | Sleek (todo.txt) / Neovim (Reflexion)
 # Monitor 2 (DP-1):     Claude Code / Yazi | LibreOffice Calc (Wochenplan)
 
 COACH_DIR="$HOME/Nextcloud/a-projekte/1-uli-persoenlich/coach"
@@ -14,11 +14,11 @@ swaymsg 'workspace 1; move workspace to output HDMI-A-1'
 flatpak run eu.betterbird.Betterbird &
 sleep 2
 
-flatpak run com.todoist.Todoist &
+sleek &
 sleep 2
 
-# Todoist-Bereich vertikal splitten, Neovim darunter
-swaymsg '[app_id="Todoist"] focus; splitv'
+# Sleek-Bereich vertikal splitten, Neovim darunter
+swaymsg '[app_id="sleek"] focus; splitv'
 foot --app-id=review-nvim -e nvim "$REVIEW_FILE" &
 sleep 1
 
