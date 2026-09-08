@@ -45,7 +45,7 @@ psum=$(jq -r '.daily.precipitation_sum[0]' <<<"$data")
 pprob=$(jq -r '.daily.precipitation_probability_max[0]' <<<"$data")
 zeit=$(jq -r '.current.time' <<<"$data" | cut -dT -f2)
 
-text=$(printf '%.0f°C %smm' "$temp" "$precip")
+text=$(printf '%.0f°C %smm %s%%' "$temp" "$precip" "$pprob")
 nl=$'\n'
 tooltip="Pohlheim-Watzenborn-Steinberg ($zeit)${nl}$(wmo_text "$code")${nl}Aktuell: ${temp}°C, Niederschlag ${precip} mm/h${nl}Heute: ${tmin}–${tmax}°C, ${psum} mm, Regenwahrsch. max. ${pprob} %"
 
