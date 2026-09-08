@@ -19,3 +19,16 @@
 #custom-mullvad.disconnected {
     background-color: #f53c3c;
 }
+
+#custom-wetter {
+    padding: 0 10px;
+}
+
+#custom-wetter.rain {
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+#custom-wetter.error {
+    color: #f53c3c;
+}
