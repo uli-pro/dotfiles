@@ -4,7 +4,7 @@
       "height": 26,                                                                                                 
       "modules-left": ["hyprland/workspaces", "sway/workspaces", "sway/mode"],                                                                      
       "modules-center": ["cpu","temperature", "memory", "network", "custom/mullvad"],
-      "modules-right": ["custom/wetter", "pulseaudio", "clock", "tray"],                                          
+      "modules-right": ["custom/spotify", "custom/wetter", "pulseaudio", "clock", "tray"],                                          
                                                                                                                     
       "hyprland/workspaces": {                                                                                      
           "format": "{id}"                                                                                          
@@ -32,6 +32,15 @@
       "temperature": {
           "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
           "format": "{temperatureC}°C"
+      },
+      "custom/spotify": {
+          "exec": "playerctl -p spotify_player -F metadata --format '{{status}} {{artist}} – {{title}}' | sed -u 's/^Playing/▶/; s/^Paused/▌▌/'",
+          "max-length": 50,
+          "on-click": "playerctl -p spotify_player play-pause",
+          "on-click-right": "playerctl -p spotify_player next",
+          "on-scroll-up": "playerctl -p spotify_player volume 0.05+",
+          "on-scroll-down": "playerctl -p spotify_player volume 0.05-",
+          "tooltip": false
       },
       "custom/wetter": {
           "exec": "~/.local/bin/waybar-wetter.sh",

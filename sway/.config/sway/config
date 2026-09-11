@@ -199,6 +199,19 @@ input * {
     exec foot --app-id=foot-dropdown3 bash -ic 'assistent; exec bash'
     bindsym Shift+Ctrl+F12 [app_id="^foot-dropdown3$"] scratchpad show, resize set 50 ppt 100 ppt, move position 0 0
 
+    # Viertes Drop-Down-Terminal — Shift+Alt+F12 toggelt spotify_player (foot-dropdown4), linkes oberes Viertel
+    # Läuft ab Sway-Start versteckt im Scratchpad → ist damit dauerhaft als Spotify-Connect-Gerät "DeskMini" erreichbar
+    # (Daemon-Feature ist im cargo-Build nicht enthalten). Nach `q` bleibt eine interaktive bash-Shell offen.
+    for_window [app_id="^foot-dropdown4$"] floating enable, move scratchpad
+    exec foot --app-id=foot-dropdown4 bash -ic '/home/uli/.cargo/bin/spotify_player; exec bash'
+    bindsym Shift+Mod1+F12 [app_id="^foot-dropdown4$"] scratchpad show, resize set 50 ppt 50 ppt, move position 0 0
+
+    # Medientasten → playerctl (MPRIS: spotify_player, Firefox, mpv, Brave, ...)
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioPause exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+
     # Typora (XWayland) startet sich selbst im Fullscreen — unterdrücken
     for_window [class="^Typora$"] fullscreen disable
 
@@ -226,6 +239,13 @@ mode "resize" {
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
     bindsym Right resize grow width 10px
+
+    # Feste Breiten-Verhaeltnisse bei zwei Fenstern (1920px Monitor)
+    # Achtung: "ppt" wirkt in sway 1.11 multiplikativ auf die aktuelle
+    # Breite, nicht auf den Eltern-Container -> deshalb Pixelwerte.
+    bindsym 1 resize set width 960px, mode "default"
+    bindsym 2 resize set width 1280px, mode "default"
+    bindsym 3 resize set width 1440px, mode "default"
 
     # Return to default mode
     bindsym Return mode "default"
