@@ -181,22 +181,23 @@ input * {
     bindsym $mod+minus [app_id="^(?!foot-dropdown).*"] scratchpad show
 
     # Drop-Down-Terminal (Quake-Style) — F12 toggelt foot-Scratchpad, rechtes unteres Viertel
+    # Drop-Downs 1–3 laufen über ~/bin/dropdown-keeper: versehentlich geschlossen → sofort neu gestartet (versteckt im Scratchpad)
     # Anker ^...$ zwingend: app_id-Kriterien sind Regex, sonst matcht "foot-dropdown" auch "foot-dropdown2"
     for_window [app_id="^foot-dropdown$"] floating enable, move scratchpad
-    exec foot --app-id=foot-dropdown
+    exec /home/uli/bin/dropdown-keeper foot-dropdown
     # Y-Position 527 = Arbeitsflächenhöhe 1054 (1080 − 26 px Waybar) − Fensterhöhe 527 (50 ppt von 1054)
     bindsym F12 [app_id="^foot-dropdown$"] scratchpad show, resize set 50 ppt 50 ppt, move position 960 527
 
     # Zweites Drop-Down-Terminal — Shift+F12 toggelt zweiten foot-Scratchpad, rechtes oberes Viertel
     # Startet yazi via Wrapper-Funktion `y` (cwd-Übergabe an Shell); nach `q` bleibt eine interaktive bash-Shell offen
     for_window [app_id="^foot-dropdown2$"] floating enable, move scratchpad
-    exec foot --app-id=foot-dropdown2 bash -ic 'y; exec bash'
+    exec /home/uli/bin/dropdown-keeper foot-dropdown2 bash -ic 'y; exec bash'
     bindsym Shift+F12 [app_id="^foot-dropdown2$"] scratchpad show, resize set 50 ppt 50 ppt, move position 960 0
 
     # Drittes Drop-Down-Terminal — Shift+Strg+F12 toggelt Claude Assistent (foot-dropdown3), linke Bildschirmhälfte
     # Startet Claude Code via Alias `assistent` (cd ins claude-assistent-Projekt + claude); nach Exit bleibt eine interaktive bash-Shell offen
     for_window [app_id="^foot-dropdown3$"] floating enable, move scratchpad
-    exec foot --app-id=foot-dropdown3 bash -ic 'assistent; exec bash'
+    exec /home/uli/bin/dropdown-keeper foot-dropdown3 bash -ic 'assistent; exec bash'
     bindsym Shift+Ctrl+F12 [app_id="^foot-dropdown3$"] scratchpad show, resize set 50 ppt 100 ppt, move position 0 0
 
     # Viertes Drop-Down-Terminal — Shift+Alt+F12 toggelt spotify_player (foot-dropdown4), linkes oberes Viertel

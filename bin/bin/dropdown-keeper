@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# dropdown-keeper <app_id> [befehl...]
+# Hält ein foot-Drop-Down am Leben: wird das Fenster geschlossen, startet es sofort neu
+# (landet per for_window wieder versteckt im Scratchpad). Endet, sobald Sway nicht mehr läuft.
+app_id=$1; shift
+
+while swaymsg -t get_version >/dev/null 2>&1; do
+    if swaymsg -t get_tree | grep -q "\"app_id\": \"$app_id\""; then
+        # Fenster existiert schon (nicht von diesem Script gestartet) → warten, bis es weg ist
+        sleep 2
+    else
+        foot --app-id="$app_id" "$@"
+        sleep 1   # Schutz gegen Endlosschleife, falls foot sofort abbricht
+    fi
+done
