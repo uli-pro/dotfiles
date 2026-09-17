@@ -10,6 +10,8 @@ alias coach='cd /home/uli/Nextcloud/a-projekte/1-uli-persoenlich/coach && claude
 
 alias feg='cd /home/uli/Nextcloud/a-projekte/5-ngue/vortrag-feg-wetzlar && claude'
 
+alias werbung='cd /home/uli/Nextcloud/a-projekte/5-ngue/werbung && claude'
+
 alias karten='cd /home/uli/Nextcloud/b-archiv/2-familie/karten'
 
 alias nca='cd /home/uli/Nextcloud/a-projekte'
