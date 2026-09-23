@@ -19,6 +19,7 @@ GNU Stow-managed dotfiles for Fedora 43 Sway Spin.
 | wireplumber | WirePlumber session manager |
 | pianoteq-autolink | Pianoteq autoconnect (systemd + script) |
 | scripts | Custom shell scripts |
+| gtk | GTK3/GTK4 settings.ini (print backends: cups,file — no LPR entry) |
 
 ## Usage
 
