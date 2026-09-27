@@ -34,3 +34,22 @@ type = "caldav"
 url = "https://nc.familieprobst.org/remote.php/dav/calendars/uli/"
 username = "uli"
 password.fetch = ["command", "cat", "~/.config/vdirsyncer/nc-password"]
+
+# --- Nextcloud: alle für uli sichtbaren Kalender (inkl. Estis Freigabe), eingerichtet 2026-09-06 ---
+# App-Passwort liegt in ~/.config/vdirsyncer/nc-app-passwort (nur die eine Zeile, chmod 600)
+[pair nc]
+a = "nc_local"
+b = "nc_remote"
+collections = ["from a", "from b"]
+metadata = ["displayname", "color"]
+
+[storage nc_local]
+type = "filesystem"
+path = "~/.local/share/calendars/nc/"
+fileext = ".ics"
+
+[storage nc_remote]
+type = "caldav"
+url = "https://nc.familieprobst.org/remote.php/dav/calendars/uli/"
+username = "uli"
+password.fetch = ["command", "cat", "/home/uli/.config/vdirsyncer/nc-app-passwort"]

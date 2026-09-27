@@ -1,3 +1,4 @@
 .DS_Store
 sway/.config/sway/config.d/*
 borgmatic/.config/borgmatic/.passphrase
+vdirsyncer/.config/vdirsyncer/nc-app-passwort
