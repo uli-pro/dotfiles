@@ -22,3 +22,8 @@ desc = "Play audio with mpv"
 on = "B"
 run = 'shell -- xdg-open "$@" &'
 desc = "Open in browser (xdg-open)"
+
+[[mgr.prepend_keymap]]
+on = "F"
+run = 'shell -- h=%h; d="$PWD"; [ -n "$h" ] && [ -d "$h" ] && d="$h"; setsid -f foot -D "$d" >/dev/null 2>&1'
+desc = "Open foot terminal here (hovered dir or CWD)"
