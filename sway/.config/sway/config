@@ -41,6 +41,10 @@ exec swayidle -w \
          timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 
 exec ~/.cargo/bin/wl-clip-persist --clipboard regular
+
+# Zwischenablage-Verlauf: cliphist speichert jede Kopie, $mod+Shift+v öffnet die Auswahl
+exec wl-paste --watch ~/.local/bin/cliphist -max-items 200 store
+bindsym $mod+Shift+v exec ~/.local/bin/cliphist list | fuzzel --dmenu --prompt 'Verlauf: ' | ~/.local/bin/cliphist decode | wl-copy
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
