@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# spotify-toggle — Shift+Alt+F12: Spotify (Flatpak) ein-/ausblenden
+# Sichtbar → zurück in den Scratchpad, egal auf welchem Bildschirm der Fokus liegt.
+# Versteckt → immer rechte Hälfte des linken Bildschirms (HDMI-A-1), unterhalb der Waybar (26 px).
+# Läuft Spotify nicht, wird es gestartet (landet per for_window im Scratchpad) und dann eingeblendet.
+crit='[app_id="^spotify$"]'
+show="$crit scratchpad show, resize set 960 px 1054 px, move absolute position 960 26"
+
+state() { swaymsg -t get_tree | jq -r '[.. | select(.app_id? == "spotify") | .visible] | if length == 0 then "none" elif any then "visible" else "hidden" end'; }
+
+case $(state) in
+    visible) swaymsg "$crit move scratchpad" >/dev/null ;;
+    hidden)  swaymsg "$show" >/dev/null ;;
+    none)
+        swaymsg exec 'flatpak run com.spotify.Client' >/dev/null
+        for _ in $(seq 30); do   # max. 15 s auf das Fenster warten
+            sleep 0.5
+            [ "$(state)" = hidden ] && { swaymsg "$show" >/dev/null; break; }
+        done ;;
+esac

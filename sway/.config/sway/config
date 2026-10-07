@@ -204,6 +204,13 @@ input * {
     exec /home/uli/bin/dropdown-keeper foot-dropdown3 bash -ic 'assistent; exec bash'
     bindsym Shift+Ctrl+F12 [app_id="^foot-dropdown3$"] scratchpad show, resize set 50 ppt 100 ppt, move position 0 0
 
+    # Spotify (Flatpak) — startet mit Sway versteckt im Scratchpad, Shift+Alt+F12 toggelt es (~/bin/spotify-toggle,
+    # blendet auch aus, wenn Spotify auf dem anderen Bildschirm offen ist; startet Spotify, falls es nicht läuft)
+    # Immer rechte Hälfte des linken Bildschirms (HDMI-A-1), unterhalb der Waybar (26 px)
+    for_window [app_id="^spotify$"] floating enable, move scratchpad
+    exec flatpak run com.spotify.Client
+    bindsym Shift+Mod1+F12 exec /home/uli/bin/spotify-toggle
+
     # Medientasten → playerctl (MPRIS: Spotify, Firefox, mpv, Brave, ...)
     bindsym XF86AudioPlay exec playerctl play-pause
     bindsym XF86AudioPause exec playerctl play-pause
