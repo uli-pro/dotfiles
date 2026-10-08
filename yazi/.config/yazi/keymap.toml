@@ -5,22 +5,22 @@ desc = "Extract archive with unar"
 
 [[mgr.prepend_keymap]]
 on = "T"
-run = 'shell -- ~/Programme/Typora-linux-x64/Typora "$@" &'
+run = 'shell -- ~/Programme/Typora-linux-x64/Typora %s &'
 desc = "Open in Typora"
 
 [[mgr.prepend_keymap]]
 on = "I"
-run = 'shell -- gthumb "$@" &'
+run = 'shell -- gthumb %s &'
 desc = "Open in gThumb"
 
 [[mgr.prepend_keymap]]
 on = "M"
-run = 'shell --block -- mpv --no-video --term-osd-bar "$@"'
+run = 'shell --block -- mpv --no-video --term-osd-bar %s'
 desc = "Play audio with mpv"
 
 [[mgr.prepend_keymap]]
 on = "B"
-run = 'shell -- xdg-open "$@" &'
+run = 'shell -- xdg-open %s &'
 desc = "Open in browser (xdg-open)"
 
 [[mgr.prepend_keymap]]
